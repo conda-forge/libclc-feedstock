@@ -1,5 +1,5 @@
 {% set name = "libclc" %}
-{% set version = "16.0.1" %}
+{% set version = "17.0.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/libclc-{{ version }}.src.tar.xz
-    sha256: 23e4c684d50200ab6ec2b0120b4da2531ce8144b131a558ba0d42ab4efe0d996
+    sha256: 122f641d94d5dfbb3c37534f2b76612fa59d15c36c2a4917369a85eaaca32148
 
 build:
   number: 0
@@ -15,6 +15,7 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - cmake
     - make    # [unix]
@@ -24,6 +25,7 @@ requirements:
     - llvm-spirv {{ ".".join(version.split(".")[:2]) }}.*
     - clang    {{ version }}.*
     - spirv-tools
+    - zlib
   run_constrained:
     - llvmdev  {{ version }}.*
 
@@ -32,6 +34,7 @@ test:
     - test -f ${PREFIX}/include/clc/clc.h          # [unix]
     - test -f ${PREFIX}/share/pkgconfig/libclc.pc  # [unix]
     - test -f ${PREFIX}/share/clc/nvptx64--.bc     # [unix]
+    - test -f ${PREFIX}/share/clc/spirv64-mesa3d-.spv  # [unix]
 
 about:
   home: https://llvm.org
@@ -44,4 +47,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - JarrettSJohnson
     - isuruf
