@@ -1,5 +1,5 @@
 {% set name = "libclc" %}
-{% set version = "19.1.7" %}
+{% set version = "20.1.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/libclc-{{ version }}.src.tar.xz
-    sha256: 77e2d71f5cea1d0b1014ba88186299d1a0848eb3dc20948baae649db9e7641cb
+    sha256: ecd83a52859742f71f4c332538f8bee54a6743374a233b5a85017de22d75c227
     patches:
       - cross-compile-prepare-builtins.patch  # [build_platform != target_platform]
 
