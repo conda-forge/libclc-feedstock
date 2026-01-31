@@ -1,8 +1,8 @@
 # On macOS, keep compiler version in sync with LLVM version to avoid conflicts
 # between {{ compiler('cxx') }} and clang
 c_compiler_version:
-  - 17  # [osx]
+  - 18  # [osx]
 cxx_compiler_version:
-  - 17  # [osx]
+  - 18  # [osx]
 spirv_tools:
   - 2024
