@@ -1,5 +1,5 @@
 {% set name = "libclc" %}
-{% set version = "19.1.3" %}
+{% set version = "21.1.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/libclc-{{ version }}.src.tar.xz
-    sha256: b49fab401aaa65272f0480f6d707a9a175ea8e68b6c5aa910457c4166aa6328f
+    sha256: 6c2677362a53531c35edf482bdc9171ea0471ca0a1e9138ac9b5a1782925616f
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   build:
