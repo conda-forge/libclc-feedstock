@@ -1,5 +1,5 @@
 {% set name = "libclc" %}
-{% set version = "20.1.8" %}
+{% set version = "21.1.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/libclc-{{ version }}.src.tar.xz
-    sha256: ecd83a52859742f71f4c332538f8bee54a6743374a233b5a85017de22d75c227
+    sha256: 6c2677362a53531c35edf482bdc9171ea0471ca0a1e9138ac9b5a1782925616f
     patches:
       - cross-compile-prepare-builtins.patch  # [build_platform != target_platform]
 
@@ -37,7 +37,6 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/include/clc/clc.h          # [unix]
     - test -f ${PREFIX}/share/pkgconfig/libclc.pc  # [unix]
     - test -f ${PREFIX}/share/clc/nvptx64--.bc     # [unix]
     - test -f ${PREFIX}/share/clc/spirv64-mesa3d-.spv  # [unix]

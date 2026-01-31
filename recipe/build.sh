@@ -26,6 +26,7 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
   export CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=${PREFIX}"
   # Use native LLVM tools (clang, llvm-as, etc.) from BUILD_PREFIX
   export CMAKE_ARGS="${CMAKE_ARGS} -DLIBCLC_CUSTOM_LLVM_TOOLS_BINARY_DIR=${BUILD_PREFIX}/bin"
+  export CMAKE_ARGS="${CMAKE_ARGS} -DLLVM_CUSTOM_TOOL_clang=${CC_FOR_BUILD}"
   # llvm-spirv is not covered by LIBCLC_CUSTOM_LLVM_TOOLS_BINARY_DIR, pass it directly
   export CMAKE_ARGS="${CMAKE_ARGS} -DLLVM_SPIRV=${BUILD_PREFIX}/bin/llvm-spirv"
 fi
