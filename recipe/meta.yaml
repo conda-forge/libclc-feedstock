@@ -1,8 +1,7 @@
-{% set name = "libclc" %}
 {% set version = "21.1.8" %}
 
 package:
-  name: {{ name|lower }}
+  name: libclc
   version: {{ version }}
 
 source:
