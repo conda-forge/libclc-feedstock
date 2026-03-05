@@ -1,6 +1,0 @@
-# allow compiler version to float, to avoid conflicts
-# between {{ compiler('cxx') }} and clang
-c_compiler_version:
-  - "*"                 # [osx]
-cxx_compiler_version:
-  - "*"                 # [osx]
