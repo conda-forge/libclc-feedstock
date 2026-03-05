@@ -1,6 +1,6 @@
-# On macOS, keep compiler version in sync with LLVM version to avoid conflicts
+# allow compiler version to float, to avoid conflicts
 # between {{ compiler('cxx') }} and clang
 c_compiler_version:
-  - 21  # [osx]
+  - "*"                 # [osx]
 cxx_compiler_version:
-  - 21  # [osx]
+  - "*"                 # [osx]
