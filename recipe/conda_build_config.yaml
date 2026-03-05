@@ -4,5 +4,3 @@ c_compiler_version:
   - 21  # [osx]
 cxx_compiler_version:
   - 21  # [osx]
-spirv_tools:
-  - 2025
