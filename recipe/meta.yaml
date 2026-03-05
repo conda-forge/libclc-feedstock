@@ -1,4 +1,4 @@
-{% set version = "21.1.8" %}
+{% set version = "22.1.0" %}
 
 package:
   name: libclc
@@ -6,12 +6,12 @@ package:
 
 source:
   - url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-{{ version.replace(".rc", "-rc") }}.tar.gz
-    sha256: 7ba3f2a8d8fda88be18a31d011e8195d3b7f87f9fa92b20c94cba2d7f65b0e3f
+    sha256: 933765a1c2cd518d95a9033a92d88d7109a79aefa4609247c31f28b8bc8dd96e
     patches:
       - patches/0001-cross-compile-prepare_builtins.patch  # [build_platform != target_platform]
 
 build:
-  number: 2
+  number: 0
   skip: True  # [win]
 
 requirements:
