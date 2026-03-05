@@ -5,13 +5,13 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/libclc-{{ version }}.src.tar.xz
-    sha256: 6c2677362a53531c35edf482bdc9171ea0471ca0a1e9138ac9b5a1782925616f
+  - url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-{{ version.replace(".rc", "-rc") }}.tar.gz
+    sha256: 7ba3f2a8d8fda88be18a31d011e8195d3b7f87f9fa92b20c94cba2d7f65b0e3f
     patches:
-      - cross-compile-prepare-builtins.patch  # [build_platform != target_platform]
+      - patches/0001-cross-compile-prepare_builtins.patch  # [build_platform != target_platform]
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
 
 requirements:

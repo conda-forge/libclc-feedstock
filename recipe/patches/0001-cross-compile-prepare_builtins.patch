@@ -1,0 +1,40 @@
+From b389ef0eee76114d5e144875390c3be80b523a89 Mon Sep 17 00:00:00 2001
+From: Jarrett Johnson <jarrett.johnson@schrodinger.com>
+Date: Fri, 30 Jan 2026 21:00:19 -0500
+Subject: [PATCH] cross compile prepare_builtins
+
+---
+ libclc/CMakeLists.txt | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/libclc/CMakeLists.txt b/libclc/CMakeLists.txt
+index c98e2043464d..a138f5743858 100644
+--- a/libclc/CMakeLists.txt
++++ b/libclc/CMakeLists.txt
+@@ -179,16 +179,20 @@ set(LLVM_LINK_COMPONENTS
+   Support
+ )
+ if( LIBCLC_STANDALONE_BUILD )
+-  add_llvm_executable( prepare_builtins utils/prepare-builtins.cpp )
+-  set( prepare_builtins_exe prepare_builtins )
+-  set( prepare_builtins_target prepare_builtins )
++  if( NOT prepare_builtins_exe )
++    add_llvm_executable( prepare_builtins utils/prepare-builtins.cpp )
++    set( prepare_builtins_exe prepare_builtins )
++    set( prepare_builtins_target prepare_builtins )
++  endif()
+ else()
+   add_llvm_utility( prepare_builtins utils/prepare-builtins.cpp )
+   setup_host_tool( prepare_builtins PREPARE_BUILTINS prepare_builtins_exe prepare_builtins_target )
+ endif()
+-target_compile_definitions( prepare_builtins PRIVATE ${LLVM_VERSION_DEFINE} )
+-# These were not properly reported in early LLVM and we don't need them
+-target_compile_options( prepare_builtins PRIVATE -fno-rtti -fno-exceptions )
++if( TARGET prepare_builtins )
++  target_compile_definitions( prepare_builtins PRIVATE ${LLVM_VERSION_DEFINE} )
++  # These were not properly reported in early LLVM and we don't need them
++  target_compile_options( prepare_builtins PRIVATE -fno-rtti -fno-exceptions )
++endif()
+ 
+ # Setup arch devices
+ set( r600--_devices cedar cypress barts cayman )
