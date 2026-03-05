@@ -27,8 +27,10 @@ requirements:
     - llvmdev  {{ version }}.*
     - llvm-spirv {{ ".".join(version.split(".")[:2]) }}.*
     - clang    {{ version }}.*
+    - libxml2-devel
     - spirv-tools
     - zlib
+    - zstd
   run_constrained:
     - llvmdev  {{ version }}.*
 
