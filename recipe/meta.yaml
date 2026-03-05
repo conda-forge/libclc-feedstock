@@ -1,18 +1,15 @@
-{% set name = "libclc" %}
-{% set version = "21.1.8" %}
+{% set version = "22.1.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: libclc
   version: {{ version }}
 
 source:
-  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/libclc-{{ version }}.src.tar.xz
-    sha256: 6c2677362a53531c35edf482bdc9171ea0471ca0a1e9138ac9b5a1782925616f
-    patches:
-      - cross-compile-prepare-builtins.patch  # [build_platform != target_platform]
+  - url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-{{ version.replace(".rc", "-rc") }}.tar.gz
+    sha256: 933765a1c2cd518d95a9033a92d88d7109a79aefa4609247c31f28b8bc8dd96e
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win]
 
 requirements:
@@ -30,8 +27,10 @@ requirements:
     - llvmdev  {{ version }}.*
     - llvm-spirv {{ ".".join(version.split(".")[:2]) }}.*
     - clang    {{ version }}.*
+    - libxml2-devel
     - spirv-tools
     - zlib
+    - zstd
   run_constrained:
     - llvmdev  {{ version }}.*
 

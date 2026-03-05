@@ -15,7 +15,7 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
     -DCMAKE_PREFIX_PATH=${BUILD_PREFIX} \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,${BUILD_PREFIX}/lib" \
     -DLLVM_DIR=${BUILD_PREFIX}/lib/cmake/llvm \
-    ../..
+    ../../libclc
   make prepare_builtins -j${CPU_COUNT}
 
   PREPARE_BUILTINS_PATH="$(pwd)/prepare_builtins"
@@ -32,11 +32,11 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
 fi
 
 cmake \
-	${CMAKE_ARGS} \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_MODULE_PATH=${PREFIX}/lib/cmake/llvm \
-	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
-	..
+  ${CMAKE_ARGS} \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_MODULE_PATH=${PREFIX}/lib/cmake/llvm \
+  -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
+  ../libclc
 
 make -j${CPU_COUNT}
 make install
