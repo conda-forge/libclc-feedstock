@@ -180,5 +180,6 @@ Feedstock Maintainers
 =====================
 
 * [@JarrettSJohnson](https://github.com/JarrettSJohnson/)
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@isuruf](https://github.com/isuruf/)
 
