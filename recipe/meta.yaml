@@ -1,4 +1,4 @@
-{% set version = "22.1.8" %}
+{% set version = "23.1.6" %}
 
 package:
   name: libclc
@@ -6,7 +6,7 @@ package:
 
 source:
   - url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-{{ version.replace(".rc", "-rc") }}.tar.gz
-    sha256: ad18b70e287954c3d62bc7e0b86e7b7af2adf87bcfce21c15fe717f101d7aace
+    sha256: 66b37a51976c46ad86f49a2304c4dfd64be971f858846dfffaa8a32632474bb8
 
 build:
   number: 0
